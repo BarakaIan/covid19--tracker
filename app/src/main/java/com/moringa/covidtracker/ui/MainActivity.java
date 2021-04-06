@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String name = mNameEditText.getText().toString();
-                Intent intent = new Intent(MainActivity.this, FAQActivity.class);
+                Intent intent = new Intent(MainActivity.this, CountryActivity.class);
                 intent.putExtra("userName", name);
                 startActivity(intent);
             }

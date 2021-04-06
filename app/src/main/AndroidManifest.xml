@@ -12,7 +12,7 @@
         <activity
             android:name=".create_account"
             android:label="@string/title_activity_create_account"
-            android:theme="@style/Theme.CovidTracker.NoActionBar"></activity>
+            android:theme="@style/Theme.CovidTracker.NoActionBar" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/findCountryButton"
-        android:layout_marginBottom="574dp"
+        android:layout_marginBottom="144dp"
         android:background="@android:color/background_light"
         android:padding="5dp"
         android:text="Staying home can save lives.Protect yourself and others around you by knowing the facts and taking appropriate precautions"

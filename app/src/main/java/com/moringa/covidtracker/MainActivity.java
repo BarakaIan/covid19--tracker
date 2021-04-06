@@ -15,6 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
+
     @BindView(R.id.HomepageEnterButton) Button mHomePageEnterButton;
     @BindView(R.id.nameEditText) EditText mNameEditText;
 
@@ -55,10 +56,5 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
     }
 }

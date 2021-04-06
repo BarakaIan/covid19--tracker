@@ -15,8 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class FAQActivity  extends AppCompatActivity {
-    @BindView(R.id.MostCommonSymptomslistView)
-    ListView mMostCommonSymptomslistView;
+    @BindView(R.id.MostCommonSymptomslistView) ListView mMostCommonSymptomslistView;
     @BindView(R.id.lessCommonSymptomslistView) ListView mLessCommonSymptomslistView;
     @BindView(R.id.seriousSymptomslistView) ListView mSeriousSymptomslistView;
     @BindView(R.id.preventionListView) ListView mPreventionListView;
@@ -46,7 +45,7 @@ public class FAQActivity  extends AppCompatActivity {
         //Validation of the input on the menu bar
         getSupportActionBar().setTitle("Welcome " + userName);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        String welcomeText= "Welcome to TrackCovid " + userName;
+        String welcomeText= "Welcome to CovidTracker App " + userName;
         Toast.makeText(FAQActivity.this, welcomeText, Toast.LENGTH_LONG).show();
 
         //Creating array adapters for passing the different arrays to the layouts

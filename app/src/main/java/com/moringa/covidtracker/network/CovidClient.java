@@ -1,5 +1,7 @@
 package com.moringa.covidtracker.network;
 
+import com.moringa.covidtracker.Constants;
+
 public class CovidClient {
     private static Retrofit retrofit = null;
 

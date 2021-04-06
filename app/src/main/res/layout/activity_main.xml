@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/doctor" />
-
-    <ImageView
-        android:id="@+id/ImageView"
-        android:layout_width="match_parent"
-        android:layout_height="704dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/virus_horizontal" />
+    android:background="@drawable/virus_horizontal"
+    tools:context=".ui.MainActivity">
 
     <TextView
         android:id="@+id/appNameTextView"
@@ -24,77 +12,66 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:text="COVID TRACKER APP"
-        android:textColor="@color/white"
-        android:textSize="36sp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="monospace"
+        android:padding="10dp"
+        android:text="ConaStat"
+        android:textColor="@color/teal_700"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
-    <!--    Get user input in the edit text-->
 
+    <Button
+        android:id="@+id/aboutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:paddingRight="100dp"
+        android:text="About Us"
+        android:textColor="@color/white"
+        android:textSize="39sp" />
 
-    <EditText
-        android:id="@+id/textEditText"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="254dp"
-        android:layout_above="@id/getStartedButton"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="254dp"
-        android:background="@color/white"
-        android:fontFamily="sans-serif-medium"
-        android:padding="10dp"
-        android:text="COVID-19 affects different people in different ways.
-         Most infected people will develop mild to moderate illness and recover without hospitalization.
-Most common symptoms:
-fever
-dry cough
-tiredness"
-        android:textColor="@color/black"
-        android:textSize="24sp" />
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/covid" />
 
     <EditText
-        android:id="@+id/nameEditText"
-        android:layout_width="397dp"
-        android:layout_height="71dp"
-        android:layout_above="@+id/getStartedButton"
-        android:layout_marginBottom="17dp"
-        android:background="@color/white"
-        android:fontFamily="sans-serif-medium"
-        android:hint="Enter your user name"
-        android:padding="10dp"
-        android:textColor="@color/black"
+        android:id="@+id/continentEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/findCountryButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@android:color/holo_blue_light"
+        android:hint="Enter country"
+        android:padding="5dp"
         android:textSize="30sp" />
 
     <EditText
-        android:id="@+id/typeEditText"
-        android:layout_width="840dp"
-        android:layout_height="286dp"
-        android:layout_above="@id/getStartedButton"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="983dp"
-        android:background="@color/white"
-        android:fontFamily="sans-serif-medium"
-        android:padding="10dp"
-        android:text="Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus.
-Most people who fall sick with COVID-19 will experience mild to moderate symptoms and recover without special treatment."
-        android:textColor="@color/black"
-        android:textSize="36sp" />
+        android:id="@+id/countryEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/findCountryButton"
+        android:layout_marginBottom="574dp"
+        android:background="@android:color/background_light"
+        android:padding="5dp"
+        android:text="Staying home can save lives.Protect yourself and others around you by knowing the facts and taking appropriate precautions"
+        android:textSize="30sp" />
 
     <Button
-        android:id="@+id/getStartedButton"
-        android:layout_width="381dp"
-        android:layout_height="79dp"
+        android:id="@+id/findCountryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="9dp"
-        android:background="@color/design_default_color_primary_dark"
-        android:fontFamily="monospace"
-        android:lineSpacingExtra="8sp"
-        android:text="Get Started"
-        android:textColor="@color/design_default_color_on_primary"
-        android:textSize="24sp"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.539"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/white"
+        android:text="Find Country"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
 </RelativeLayout>

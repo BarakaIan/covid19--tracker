@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.HomepageEnterButton) Button mHomePageEnterButton;
+    @BindView(R.id.getStartedButton) Button mGetStartedButton;
     @BindView(R.id.nameEditText) EditText mNameEditText;
 
     @Override
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         //Onclick function for navigating to the next activity
-        mHomePageEnterButton.setOnClickListener(new View.OnClickListener() {
+        mGetStartedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String name = mNameEditText.getText().toString();

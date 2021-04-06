@@ -4,8 +4,6 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--    Get user input in the edit text-->
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -15,46 +13,48 @@
 
     <TextView
         android:id="@+id/appNameTextView"
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="2dp"
-        android:text="COVID TRACKER APP"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:text="COVID TRACKER"
         android:textColor="@color/white"
         android:textSize="50sp"
         android:textStyle="bold" />
 
-
-    <EditText
-        android:id="@+id/NameEditText"
-        android:layout_width="396dp"
-        android:layout_height="357dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="234dp"
-        android:text="COVID-19 has been one of the most deadly diseases since its omset in late 2019.It s an infectious disease caused by a newly discovered coronavirus.
-Most people who fall sick with COVID-19 will experience mild to moderate symptoms and recover without special treatment."
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+    <!--    Get user input in the edit text-->
 
     <EditText
         android:id="@+id/nameEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="78dp"
+        android:layout_width="735dp"
+        android:layout_height="91dp"
+        android:layout_above="@id/HomepageEnterButton"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="38dp"
         android:background="@color/white"
+        android:fontFamily="sans-serif-medium"
         android:hint="Enter your user name"
         android:padding="10dp"
-        android:textSize="24dp" />
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
 
     <Button
         android:id="@+id/HomepageEnterButton"
-        android:layout_width="match_parent"
+        android:layout_width="675dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@color/purple_500"
-        android:text="Enter"
-        android:textColor="@color/design_default_color_on_secondary" />
+        android:layout_marginBottom="105dp"
+        android:background="@color/design_default_color_primary_dark"
+        android:text="Get Started"
+        android:textColor="@color/design_default_color_on_primary"
+        android:textSize="50sp"
+        android:textStyle="normal"
+        android:fontFamily="monospace"
+        android:lineSpacingExtra="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.539"
+        app:layout_constraintStart_toStartOf="parent"/>
 </RelativeLayout>

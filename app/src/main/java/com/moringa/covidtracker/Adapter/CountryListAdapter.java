@@ -17,7 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CountryListAdapter  extends RecyclerView.Adapter<CountryListAdapter.CountryViewHolder> {
-    //    private List<All> mAll;
+
     private Context mContext;
     private List<CovidCases> mCorona;
 
@@ -79,7 +79,6 @@ public class CountryListAdapter  extends RecyclerView.Adapter<CountryListAdapter
         }
 
         public void bindAll (CovidCases mCorona) {
-//            mCountryNameTextView.setText(String.valueOf(mCorona.getAll().getCountry()));
             mCountryNameTextView.setText(mCorona.getAll().getCountry());
             mConfirmedTextView.setText(String.valueOf(mCorona.getAll().getConfirmed()));
             mRecoveredTextView.setText(String.valueOf(mCorona.getAll().getRecovered()));

@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.moringa.covidtracker.R;
 import com.moringa.covidtracker.models.CovidCases;
 
 import java.util.List;
@@ -30,7 +31,7 @@ public class CountryListAdapter  extends RecyclerView.Adapter<CountryListAdapter
     @NonNull
     @Override
     public CountryListAdapter.CountryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.country_list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_country_list_item, parent, false);
         CountryViewHolder viewHolder = new CountryViewHolder(view);
         return viewHolder;
     }

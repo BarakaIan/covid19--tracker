@@ -85,7 +85,7 @@ Most people who fall sick with COVID-19 will experience mild to moderate symptom
         android:layout_width="381dp"
         android:layout_height="79dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="9dp"
         android:background="@color/design_default_color_primary_dark"
         android:fontFamily="monospace"
         android:lineSpacingExtra="8sp"

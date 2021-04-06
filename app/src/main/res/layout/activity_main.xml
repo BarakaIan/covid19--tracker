@@ -11,6 +11,13 @@
         android:scaleType="centerCrop"
         android:src="@drawable/doctor" />
 
+    <ImageView
+        android:id="@+id/ImageView"
+        android:layout_width="835dp"
+        android:layout_height="1480dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/virus_horizontal" />
+
     <TextView
         android:id="@+id/appNameTextView"
         android:layout_width="wrap_content"
@@ -18,20 +25,39 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
-        android:text="COVID TRACKER"
+        android:text="COVID TRACKER APP"
         android:textColor="@color/white"
         android:textSize="50sp"
         android:textStyle="bold" />
 
     <!--    Get user input in the edit text-->
 
+
+    <EditText
+        android:id="@+id/textEditText"
+        android:layout_width="820dp"
+        android:layout_height="320dp"
+        android:layout_above="@id/HomepageEnterButton"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="38dp"
+        android:background="@color/white"
+        android:fontFamily="sans-serif-medium"
+        android:padding="10dp"
+        android:text="COVID-19 affects different people in different ways.
+         Most infected people will develop mild to moderate illness and recover without hospitalization.
+Most common symptoms:
+fever
+dry cough
+tiredness"
+        android:textColor="@color/black"
+        android:textSize="36sp" />
+
     <EditText
         android:id="@+id/nameEditText"
         android:layout_width="735dp"
         android:layout_height="91dp"
-        android:layout_above="@id/HomepageEnterButton"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="38dp"
+        android:layout_above="@+id/getStartedButton"
+        android:layout_marginBottom="192dp"
         android:background="@color/white"
         android:fontFamily="sans-serif-medium"
         android:hint="Enter your user name"
@@ -39,9 +65,23 @@
         android:textColor="@color/black"
         android:textSize="30sp" />
 
+    <EditText
+        android:id="@+id/typeEditText"
+        android:layout_width="840dp"
+        android:layout_height="286dp"
+        android:layout_above="@id/getStartedButton"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="983dp"
+        android:background="@color/white"
+        android:fontFamily="sans-serif-medium"
+        android:padding="10dp"
+        android:text="Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus.
+Most people who fall sick with COVID-19 will experience mild to moderate symptoms and recover without special treatment."
+        android:textColor="@color/black"
+        android:textSize="36sp" />
 
     <Button
-        android:id="@+id/HomepageEnterButton"
+        android:id="@+id/getStartedButton"
         android:layout_width="675dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

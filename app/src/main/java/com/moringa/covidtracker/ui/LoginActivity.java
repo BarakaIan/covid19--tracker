@@ -1,0 +1,144 @@
+package com.moringa.covidtracker.ui;
+
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+    public static final String TAG = LoginActivity.class.getSimpleName();
+
+//    private SharedPreferences mSharedPreferences;
+//    private SharedPreferences.Editor mEditor;
+//    private String mRecentAddress;
+
+    private DatabaseReference mSaveEmailReference;
+    private DatabaseReference mSavePasswordReference;
+
+    @BindView(R.id.passwordLoginButton)
+    Button mPasswordLoginButton;
+    @BindView(R.id.emailEditText)
+    EditText mEmailEditText;
+    @BindView(R.id.passwordEditText) EditText mPasswordEditText;
+    @BindView(R.id.registerTextView)
+    TextView mRegisterTextView;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private ProgressDialog mAuthProgressDialog;
+    private String Email;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        ButterKnife.bind(this);
+
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mEditor = mSharedPreferences.edit();
+
+        mSaveEmailReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(CoronaApi.FIREBASE_CHILD_Email);
+        mSavePasswordReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(CoronaApi.FIREBASE_CHILD_Password);
+
+
+        mRegisterTextView.setOnClickListener(this);
+        mPasswordLoginButton.setOnClickListener(this);
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener(){
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if(user != null){
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        };
+        createAuthProgressDialog();
+    }
+
+    public void saveLocationToFirebase(String location) {
+        mSaveEmailReference.push().setValue(location);
+    }
+    public void saveLocationalToFirebase(String locational) {
+        mSavePasswordReference.push().setValue(locational);
+    }
+
+    private void createAuthProgressDialog(){
+        mAuthProgressDialog = new ProgressDialog(this);
+        mAuthProgressDialog.setTitle("Loading...");
+        mAuthProgressDialog.setMessage("Authenticating with Firebase...");
+        mAuthProgressDialog.setCancelable(false);
+    }
+    @Override
+    public void onClick(View view){
+        if(view == mRegisterTextView){
+            Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        if (view == mPasswordLoginButton){
+            loginWithPassword();
+        }
+    }
+    private void loginWithPassword(){
+        String email = mEmailEditText.getText().toString().trim();
+        saveLocationToFirebase(email);
+        String password = mPasswordEditText.getText().toString().trim();
+        saveLocationToFirebase(password);
+        if(email.equals("")){
+            mEmailEditText.setError("Please Enter Your Email");
+//            addToSharedPreferences(email);
+            return;
+        }
+        if(password.equals("")){
+            mPasswordEditText.setError("Password cannot be blank");
+            return;
+        }
+        mAuthProgressDialog.show();
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                mAuthProgressDialog.dismiss();
+                Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+                if(!task.isSuccessful()){
+                    Log.w(TAG, "signInWithEmail", task.getException());
+
+                    Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+//    private void addToSharedPreferences(String email) {
+//        mEditor.putString(CoronaApi.PREFERENCES_EMAIL_KEY, email).apply();
+//      Log.d("Shared Pref Email", mRecentAddress);
+//    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        mAuth.removeAuthStateListener(mAuthListener);
+    }
+}
+

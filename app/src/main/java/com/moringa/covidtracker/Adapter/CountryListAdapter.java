@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.moringa.covidtracker.models.CovidCases;
+
 import java.util.List;
 
 import butterknife.BindView;

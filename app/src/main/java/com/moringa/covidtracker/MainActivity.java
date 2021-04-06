@@ -1,4 +1,4 @@
-package com.moringa.covidtracker.ui;
+package com.moringa.covidtracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,9 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import com.moringa.covidtracker.CountryActivity;
-import com.moringa.covidtracker.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

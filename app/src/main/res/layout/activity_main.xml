@@ -37,7 +37,7 @@
         android:id="@+id/textEditText"
         android:layout_width="match_parent"
         android:layout_height="254dp"
-        android:layout_above="@id/getStartedButton"
+        android:layout_above="@id/findCountryButton"
         android:layout_centerVertical="true"
         android:layout_marginBottom="254dp"
         android:background="@color/white"
@@ -53,23 +53,21 @@ tiredness"
         android:textSize="24sp" />
 
     <EditText
-        android:id="@+id/nameEditText"
-        android:layout_width="397dp"
-        android:layout_height="71dp"
-        android:layout_above="@+id/getStartedButton"
-        android:layout_marginBottom="17dp"
-        android:background="@color/white"
-        android:fontFamily="sans-serif-medium"
-        android:hint="Enter your user name"
-        android:padding="10dp"
-        android:textColor="@color/black"
-        android:textSize="30sp" />
+        android:id="@+id/continentEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_700"
+        android:layout_above="@id/findCountryButton"
+        android:layout_marginBottom="20dp"
+        android:padding="5dp"
+        android:hint="Enter continent"
+        android:layout_centerHorizontal="true"/>
 
     <EditText
         android:id="@+id/typeEditText"
         android:layout_width="840dp"
         android:layout_height="286dp"
-        android:layout_above="@id/getStartedButton"
+        android:layout_above="@id/findCountryButton"
         android:layout_centerVertical="true"
         android:layout_marginBottom="983dp"
         android:background="@color/white"
@@ -81,7 +79,7 @@ Most people who fall sick with COVID-19 will experience mild to moderate symptom
         android:textSize="36sp" />
 
     <Button
-        android:id="@+id/getStartedButton"
+        android:id="@+id/findCountryButton"
         android:layout_width="381dp"
         android:layout_height="79dp"
         android:layout_alignParentBottom="true"
@@ -89,7 +87,7 @@ Most people who fall sick with COVID-19 will experience mild to moderate symptom
         android:background="@color/design_default_color_primary_dark"
         android:fontFamily="monospace"
         android:lineSpacingExtra="8sp"
-        android:text="Get Started"
+        android:text="Find Country"
         android:textColor="@color/design_default_color_on_primary"
         android:textSize="24sp"
         android:textStyle="normal"

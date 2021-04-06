@@ -10,14 +10,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
-
-    @BindView(R.id.getStartedButton) Button mGetStartedButton;
-    @BindView(R.id.nameEditText) EditText mNameEditText;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    @BindView(R.id.findCountryButton)
+    Button mfindCountryButton;
+    @BindView(R.id.continentEditText)
+    EditText mContinentEditText;
+    @BindView(R.id.appNameTextView)
+    TextView mAppNameTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,36 +29,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        //Onclick function for navigating to the next activity
-        mGetStartedButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = mNameEditText.getText().toString();
-                Intent intent = new Intent(MainActivity.this, FAQActivity.class);
-                intent.putExtra("userName", name);
-                startActivity(intent);
-            }
-        });
+        mfindCountryButton.setOnClickListener(this);
     }
 
-    //adding the additional menu to the menu bar
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_bar, menu);
-        return true;
-    }
-
-    //setting up functions for the menu bar items
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.item1:
-                Intent intent = new Intent(MainActivity.this, CountryActivity.class);
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+    public void onClick(View v) {
+        if(v == mfindCountryButton) {
+            String continent = mContinentEditText.getText().toString();
+            Intent intent = new Intent(MainActivity.this, CountryActivity.class);
+            intent.putExtra("continent", continent);
+            startActivity(intent);
         }
     }
 }

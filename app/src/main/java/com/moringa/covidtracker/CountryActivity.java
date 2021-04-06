@@ -15,7 +15,7 @@ import butterknife.BindView;
 public class CountryActivity extends AppCompatActivity {
     @BindView(R.id.continentTextView)
     TextView mContinentTextView;
-    @BindView(R.id.listview)
+    @BindView(R.id.listView)
     ListView mListView;
     private String[] country = new String[] {"China", "Us", "Vietnam", "United Kingdom", "United Arab Emirates", "Ghana", "Kenya", "France", "Mexico", "Australia"};
     private String[] continent = new String[] {"Asia", "North America", "Asia","Europe", "Asia", "Africa", "Africa", "Europe", "North America", "Oceania"};
@@ -23,7 +23,7 @@ public class CountryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_country);
-        mListView = (ListView) findViewById(R.id.listview);
+        mListView = (ListView) findViewById(R.id.listView);
         mContinentTextView = (TextView) findViewById(R.id.continentTextView);
 
         MyCountryArrayAdapter adapter = new MyCountryArrayAdapter(this, android.R.layout.simple_list_item_1, country, continent);

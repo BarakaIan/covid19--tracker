@@ -10,34 +10,34 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringa.covidtracker.R;
-import com.moringa.covidtracker.models.CovidCases;
+import com.moringa.covidtracker.models.CountriesResponse;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CountryListAdapter  extends RecyclerView.Adapter<CountryListAdapter.CountryViewHolder> {
+public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryViewHolder> {
 
     private Context mContext;
-    private List<CovidCases> mCorona;
+    private List<CountriesResponse> mCorona;
 
 
-    public CountryListAdapter( Context mContext, List<CovidCases>  mCorona) {
+    public CountryAdapter(Context mContext, List<CountriesResponse>  mCorona) {
         this.mContext = mContext;
         this.mCorona = mCorona;
     }
 
     @NonNull
     @Override
-    public CountryListAdapter.CountryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CountryAdapter.CountryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_country_list_item, parent, false);
         CountryViewHolder viewHolder = new CountryViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CountryListAdapter.CountryViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CountryAdapter.CountryViewHolder holder, int position) {
         holder.bindAll(mCorona.get(position));
     }
 
@@ -79,7 +79,7 @@ public class CountryListAdapter  extends RecyclerView.Adapter<CountryListAdapter
             mContext = itemView.getContext();
         }
 
-        public void bindAll (CovidCases mCorona) {
+        public void bindAll (CountriesResponse mCorona) {
             mCountryNameTextView.setText(mCorona.getAll().getCountry());
             mConfirmedTextView.setText(String.valueOf(mCorona.getAll().getConfirmed()));
             mRecoveredTextView.setText(String.valueOf(mCorona.getAll().getRecovered()));

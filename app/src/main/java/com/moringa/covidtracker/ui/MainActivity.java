@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.moringa.covidtracker.CountryActivity;
 import com.moringa.covidtracker.R;
 
 import butterknife.BindView;

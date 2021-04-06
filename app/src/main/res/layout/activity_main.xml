@@ -27,7 +27,7 @@
         android:layout_marginTop="35dp"
         android:text="COVID TRACKER APP"
         android:textColor="@color/white"
-        android:textSize="50sp"
+        android:textSize="36sp"
         android:textStyle="bold" />
 
     <!--    Get user input in the edit text-->
@@ -35,11 +35,11 @@
 
     <EditText
         android:id="@+id/textEditText"
-        android:layout_width="820dp"
-        android:layout_height="320dp"
-        android:layout_above="@id/HomepageEnterButton"
+        android:layout_width="match_parent"
+        android:layout_height="254dp"
+        android:layout_above="@id/getStartedButton"
         android:layout_centerVertical="true"
-        android:layout_marginBottom="38dp"
+        android:layout_marginBottom="296dp"
         android:background="@color/white"
         android:fontFamily="sans-serif-medium"
         android:padding="10dp"
@@ -50,14 +50,14 @@ fever
 dry cough
 tiredness"
         android:textColor="@color/black"
-        android:textSize="36sp" />
+        android:textSize="24sp" />
 
     <EditText
         android:id="@+id/nameEditText"
-        android:layout_width="735dp"
-        android:layout_height="91dp"
+        android:layout_width="397dp"
+        android:layout_height="71dp"
         android:layout_above="@+id/getStartedButton"
-        android:layout_marginBottom="192dp"
+        android:layout_marginBottom="17dp"
         android:background="@color/white"
         android:fontFamily="sans-serif-medium"
         android:hint="Enter your user name"
@@ -82,19 +82,19 @@ Most people who fall sick with COVID-19 will experience mild to moderate symptom
 
     <Button
         android:id="@+id/getStartedButton"
-        android:layout_width="675dp"
-        android:layout_height="wrap_content"
+        android:layout_width="381dp"
+        android:layout_height="79dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="105dp"
+        android:layout_marginBottom="5dp"
         android:background="@color/design_default_color_primary_dark"
+        android:fontFamily="monospace"
+        android:lineSpacingExtra="8sp"
         android:text="Get Started"
         android:textColor="@color/design_default_color_on_primary"
-        android:textSize="50sp"
+        android:textSize="24sp"
         android:textStyle="normal"
-        android:fontFamily="monospace"
-        android:lineSpacingExtra="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.539"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 </RelativeLayout>

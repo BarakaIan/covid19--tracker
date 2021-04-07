@@ -13,14 +13,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.moringa.covidtracker.Adapter.CountryAdapter;
 import com.moringa.covidtracker.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-public class MainActivity extends AppCompatActivity {
-
-    @BindView(R.id.aboutButton) Button mAboutButton;
+    @BindView(R.id.aboutButton)
+    Button mAboutButton;
     @BindView(R.id.appNameTextView)
     TextView mappNameTextView;
 
@@ -31,20 +32,18 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         //Onclick function for navigating to the next activity
-        mAboutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = mappNameTextView.getText().toString();
-                Intent intent = new Intent(MainActivity.this, CountryActivity.class);
-                intent.putExtra("userName", name);
-                startActivity(intent);
-            }
-        });
-    }
+        mAboutButton.setOnClickListener(this);
+
+
+
+
+
+        }
 
     //adding the additional menu to the menu bar
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu (Menu
+    menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_bar, menu);
         return true;
@@ -52,13 +51,13 @@ public class MainActivity extends AppCompatActivity {
 
     //setting up functions for the menu bar items
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-//        if (id == R.id.action_logout) {
-//            logout();
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
+    public boolean onOptionsItemSelected (MenuItem item){
+        int id = item.getItemId();
+        if (id == R.id.action_logout) {
+            logout();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
 
         switch (item.getItemId()) {
             case R.id.item1:
@@ -70,18 +69,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+
+
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v == mAboutButton) {
+            String name = mappNameTextView.getText().toString();
+            Intent intent = new Intent(MainActivity.this, CountryActivity.class);
+            intent.putExtra("userName", name);
+            startActivity(intent);
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-//        if (id == R.id.action_logout) {
-//            logout();
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
+        }
+    }
 
     private void logout() {
         FirebaseAuth.getInstance().signOut();

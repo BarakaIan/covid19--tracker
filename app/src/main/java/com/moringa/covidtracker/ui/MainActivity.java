@@ -50,28 +50,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     //setting up functions for the menu bar items
-    @Override
-    public boolean onOptionsItemSelected (MenuItem item){
-        int id = item.getItemId();
-        if (id == R.id.action_logout) {
-            logout();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-
-        switch (item.getItemId()) {
-            case R.id.item1:
-                Intent intent = new Intent(MainActivity.this, CountryActivity.class);
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+//    @Override
+//    public boolean onOptionsItemSelected (MenuItem item){
+//        int id = item.getItemId();
+//        if (id == R.id.action_logout) {
+//            logout();
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//
+//        if (item.getItemId() == R.id.item1) {
+//            Intent intent = new Intent(MainActivity.this, CountryActivity.class);
+//            startActivity(intent);
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
 
 
 
-
-    }
 
     @Override
     public void onClick(View v) {

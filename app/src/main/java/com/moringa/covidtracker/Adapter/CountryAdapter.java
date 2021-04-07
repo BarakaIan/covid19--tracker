@@ -1,98 +1,206 @@
 package com.moringa.covidtracker.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringa.covidtracker.R;
 import com.moringa.covidtracker.models.CountriesResponse;
+import com.moringa.covidtracker.network.CoronaApi;
+import com.moringa.covidtracker.network.CoronaService;
+import com.moringa.covidtracker.ui.CountryActivity;
+import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryViewHolder> {
+public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryHolder> implements Filterable {
 
-    private Context mContext;
-    private List<CountriesResponse> mCorona;
+    private List<CountriesResponse> countriesList;
+    private List<CountriesResponse> countriesListed;
+    private Context context;
 
 
-    public CountryAdapter(Context mContext, List<CountriesResponse>  mCorona) {
-        this.mContext = mContext;
-        this.mCorona = mCorona;
+    public void setCountryList(Context context, final List<CountriesResponse> countriesList) {
+        this.context = context;
+        if (this.countriesList == null) {
+            this.countriesList = countriesList;
+            this.countriesListed = countriesList;
+            notifyItemChanged(0, countriesListed.size());
+        } else {
+            final DiffUtil.DiffResult result = DiffUtil.calculateDiff(new DiffUtil.Callback() {
+                @Override
+                public int getOldListSize() {
+                    return CountryAdapter.this.countriesList.size();
+                }
+
+                @Override
+                public int getNewListSize() {
+                    return countriesList.size();
+                }
+
+                @Override
+                public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
+                    return CountryAdapter.this.countriesList.get(oldItemPosition).getCountry() == countriesList.get(newItemPosition).getCountry();
+                }
+
+                @Override
+                public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
+
+                    CountriesResponse newMovie = CountryAdapter.this.countriesList.get(oldItemPosition);
+
+                    CountriesResponse oldMovie = countriesList.get(newItemPosition);
+
+                    return newMovie.getCountry() == oldMovie.getCountry();
+                }
+            });
+            this.countriesList = countriesList;
+            this.countriesListed = countriesList;
+            result.dispatchUpdatesTo(this);
+        }
     }
 
-    @NonNull
+
     @Override
-    public CountryAdapter.CountryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_country_list_item, parent, false);
-        CountryViewHolder viewHolder = new CountryViewHolder(view);
-        return viewHolder;
+    public CountryHolder onCreateViewHolder(ViewGroup parent,
+                                            int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_country_row, parent, false);
+        return new CountryHolder(view);
     }
 
+
     @Override
-    public void onBindViewHolder(@NonNull CountryAdapter.CountryViewHolder holder, int position) {
-        holder.bindAll(mCorona.get(position));
+    public void onBindViewHolder(CountryHolder holder, final int position) {
+        holder.countryTitle.setText("Total Death : " + countriesListed.get(position).getDeaths());
+        holder.countryName.setText(countriesListed.get(position).getCountry());
+        Picasso.with(context).load(countriesListed.get(position).getCountryInfo().getFlag()).into(holder.image);
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                CoronaService coronaService =
+                        CoronaApi.getRetrofitInstance().create(CoronaService.class);
+
+
+                Call<CountriesResponse> call = coronaService.getCountryInfo(countriesListed.get(position).getCountry());
+                call.enqueue(new Callback<CountriesResponse>() {
+                    @Override
+                    public void onResponse(Call<CountriesResponse> call, Response<CountriesResponse> response) {
+
+
+
+
+
+                        Intent intent = new Intent(view.getContext(), CountryActivity.class);
+
+                        if (response.body() != null) {
+                            intent.putExtra("country", response.body().getCountry());
+                            intent.putExtra("todayCase", response.body().getTodayCases());
+                            intent.putExtra("todayDeath", response.body().getTodayDeaths());
+                            intent.putExtra("flag", response.body().getCountryInfo().getFlag());
+                            intent.putExtra("cases", response.body().getCases());
+                            intent.putExtra("deaths", response.body().getDeaths());
+                            intent.putExtra("tests", response.body().getTests());
+                            intent.putExtra("recovered", response.body().getRecovered());
+                        }
+
+
+                        view.getContext().startActivity(intent);
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<CountriesResponse> call, Throwable t) {
+                        Log.d("Error", t.getMessage());
+                    }
+                });
+
+
+            }
+        });
     }
+
 
     @Override
     public int getItemCount() {
-        return mCorona.size();
-    }
 
-//    @Override
-//    public CountryListAdapter.CountryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.country_list_item, parent, false);
-//        CountryViewHolder viewHolder = new CountryViewHolder(view);
-//        return viewHolder;
-//    }
-
-//    public void onBindViewHolder(CountryListAdapter.CountryViewHolder holder, int position) {
-//        holder.bindAll(mCorona.get(position));
-//    }
-//
-
-//    @Override
-//    public int getItemCount() {
-//       return mCorona.size();
-//    }
-
-
-
-    public class CountryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        @BindView(R.id.countryNameTextView)
-        TextView mCountryNameTextView;
-        @BindView(R.id.confirmedTextView) TextView mConfirmedTextView;
-        @BindView(R.id.recoveredTextView) TextView mRecoveredTextView;
-        @BindView(R.id.deathsTextView) TextView mDeathTextView;
-        private Context mContext;
-
-        public CountryViewHolder(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
-            mContext = itemView.getContext();
-        }
-
-        public void bindAll (CountriesResponse mCorona) {
-            mCountryNameTextView.setText(mCorona.getAll().getCountry());
-            mConfirmedTextView.setText(String.valueOf(mCorona.getAll().getConfirmed()));
-            mRecoveredTextView.setText(String.valueOf(mCorona.getAll().getRecovered()));
-            mDeathTextView.setText(String.valueOf(mCorona.getAll().getDeaths()));
-        }
-        @Override
-        public void onClick(View v) {
-//            int itemPosition = getLayoutPosition();
-//            Intent intent = new Intent(mContext, CountryDetailActivity.class);
-//            intent.putExtra("continent", itemPosition);
-//            intent.putExtra("country", Parcels.wrap(mCorona));
-//            mContext.startActivity(intent);
-
+        if (countriesList != null) {
+            return countriesListed.size();
+        } else {
+            return 0;
         }
     }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    countriesListed = countriesList;
+                } else {
+                    List<CountriesResponse> filteredList = new ArrayList<>();
+                    for (CountriesResponse movie : countriesList) {
+                        if (movie.getCountry().toLowerCase().contains(charString.toLowerCase())) {
+                            filteredList.add(movie);
+                        }
+                    }
+                    countriesListed = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = countriesListed;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                countriesListed = (ArrayList<CountriesResponse>) filterResults.values;
+
+                notifyDataSetChanged();
+            }
+        };
+    }
+
+
+    public class CountryHolder extends RecyclerView.ViewHolder {
+        CardView cardView;
+        TextView countryTitle;
+        TextView countryName;
+        ImageView image;
+
+
+        public CountryHolder(View v) {
+            super(v);
+            cardView = v.findViewById(R.id.cvCountry);
+            countryTitle = v.findViewById(R.id.tvCountryDeath);
+            countryName = v.findViewById(R.id.tvCountryName);
+            image = v.findViewById(R.id.ivCountryPoster);
+        }
+    }
+
+
 }

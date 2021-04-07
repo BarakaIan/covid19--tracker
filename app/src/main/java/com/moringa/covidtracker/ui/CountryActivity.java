@@ -50,9 +50,9 @@ public class CountryActivity  extends AppCompatActivity {
         tvTotalRecovered.setText(totalRecovered);
 
 
-        Picasso.with(getApplicationContext()).
-                load(getIntent().getStringExtra("flag"))
-                .into(ivCountryPoster);
+//        Picasso.with(getApplicationContext()).
+//                load(getIntent().getStringExtra("flag"))
+//                .into(ivCountryPoster);
 
 
     }

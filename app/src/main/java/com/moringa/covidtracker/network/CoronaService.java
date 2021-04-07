@@ -12,15 +12,21 @@ import retrofit2.http.Path;
 
 public class CoronaService {
     @GET("countries/?sort=country")
-    Call<List<CountriesResponse>> getCountries();
+    Call<List<CountriesResponse>> getCountries() {
+        return null;
+    }
 
 
     @GET("countries/{country}")
-    Call<CountriesResponse> getCountryInfo(
+    public Call<CountriesResponse> getCountryInfo(
 
             @Path("country") String country
-    );
+    ) {
+        return null;
+    }
 
     @GET("all")
-    Call<AllCountriesResponse> getAllCountries();
+    Call<AllCountriesResponse> getAllCountries() {
+        return null;
+    }
 }

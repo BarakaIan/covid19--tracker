@@ -14,6 +14,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.moringa.covidtracker.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener{
     public static final String TAG = CreateAccountActivity.class.getSimpleName();
     @BindView(R.id.createUserButton)

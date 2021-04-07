@@ -7,6 +7,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.moringa.covidtracker.R;
+import com.moringa.covidtracker.models.CountriesResponse;
+
 import java.util.ArrayList;
 
 public class FirebaseCovidViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -26,7 +29,7 @@ public class FirebaseCovidViewHolder extends RecyclerView.ViewHolder implements 
     public void bind(CountriesResponse countriesResponse) {
 
         TextView nameTextView = (TextView) mView.findViewById(R.id.tvCountryName);
-        TextView categoryTextView = (TextView) mView.findViewById(R.id.action_search);
+//        TextView categoryTextView = (TextView) mView.findViewById(R.id.action_search);
         TextView ratingTextView = (TextView) mView.findViewById(R.id.tvCountryName);
 
 
@@ -44,5 +47,4 @@ public class FirebaseCovidViewHolder extends RecyclerView.ViewHolder implements 
     }
 
 }
-{
-}
+

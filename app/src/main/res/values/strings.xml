@@ -13,4 +13,5 @@
     <string name="title_activity_create_account">create_account</string>
     <string name="title_activity_login">login</string>
     <string name="title_activity_country_row">country_row</string>
+    <string name="title_activity_covid_case">covid_case</string>
 </resources>

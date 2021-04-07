@@ -6,21 +6,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.moringa.covidtracker.Adapter.CountryAdapter;
 import com.moringa.covidtracker.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @BindView(R.id.aboutButton)
+    @BindView(R.id.HomepageEnterButton)
     Button mAboutButton;
     @BindView(R.id.appNameTextView)
     TextView mappNameTextView;
@@ -30,14 +27,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        //Onclick function for navigating to the next activity
-        mAboutButton.setOnClickListener(this);
-
-
-
-
-
         }
 
     //adding the additional menu to the menu bar
@@ -71,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        mAboutButton.setOnClickListener(this);
         if (v == mAboutButton) {
             String name = mappNameTextView.getText().toString();
             Intent intent = new Intent(MainActivity.this, CountryActivity.class);

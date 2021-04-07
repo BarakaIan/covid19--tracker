@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/imageView"
@@ -11,13 +9,6 @@
         android:scaleType="centerCrop"
         android:src="@drawable/doctor" />
 
-    <ImageView
-        android:id="@+id/ImageView"
-        android:layout_width="match_parent"
-        android:layout_height="704dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/virus_horizontal" />
-
     <TextView
         android:id="@+id/appNameTextView"
         android:layout_width="wrap_content"
@@ -25,90 +16,32 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
-        android:fontFamily="@font/yatra_one"
-        android:text="COVID"
+        android:text="COVID TRACKER"
         android:textColor="@color/white"
-        android:textSize="46sp"
+        android:textSize="50sp"
         android:textStyle="bold" />
 
     <!--    Get user input in the edit text-->
 
-
-    <TextView
-        android:id="@+id/txtNameTextView"
+    <EditText
+        android:id="@+id/nameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/appNameTextView"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="93dp"
-        android:fontFamily="@font/yatra_one"
-        android:text="TRACKER APP"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="56sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/textEditText"
-        android:layout_width="match_parent"
-        android:layout_height="234dp"
-        android:layout_above="@id/findCountryButton"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="322dp"
-        android:background="@color/cardview_dark_background"
-        android:fontFamily="sans-serif-medium"
-        android:padding="10dp"
-        android:paddingLeft="15dp"
-        android:text="COVID-19 affects different people in different ways.Most infected people will develop mild to moderate illness and recover without hospitalization.
-Most common symptoms:
-fever
-dry cough
-tiredness"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="24sp" />
-
-    <EditText
-        android:id="@+id/continentEditText"
-        android:layout_width="388dp"
-        android:layout_height="78dp"
-        android:layout_above="@+id/findCountryButton"
-        android:layout_marginBottom="36dp"
-        android:background="@color/teal_700"
-        android:hint="Enter continent"
-        android:padding="5dp" />
-
-    <EditText
-        android:id="@+id/typeEditText"
-        android:layout_width="840dp"
-        android:layout_height="286dp"
-        android:layout_above="@id/findCountryButton"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="983dp"
+        android:layout_above="@id/HomepageEnterButton"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"
         android:background="@color/white"
-        android:fontFamily="sans-serif-medium"
-        android:padding="10dp"
-        android:text="Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus.
-Most people who fall sick with COVID-19 will experience mild to moderate symptoms and recover without special treatment."
-        android:textColor="@color/black"
-        android:textSize="36sp" />
+        android:hint="Enter your user name"
+        android:padding="10dp" />
 
     <Button
-        android:id="@+id/findCountryButton"
-        android:layout_width="429dp"
-        android:layout_height="97dp"
+        android:id="@+id/HomepageEnterButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="5dp"
-        android:background="@android:color/primary_text_dark"
-        android:fontFamily="monospace"
-        android:lineSpacingExtra="8sp"
-        android:text="Find Country"
-        android:textColor="@color/design_default_color_on_primary"
-        android:textSize="24sp"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.539"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_centerHorizontal="true"
+        android:background="@color/purple_500"
+        android:text="Enter"
+        android:textColor="@color/white" />
 
 </RelativeLayout>

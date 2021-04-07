@@ -1,44 +1,27 @@
 package com.moringa.covidtracker;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import butterknife.BindView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
 
 public class CountryActivity extends AppCompatActivity {
-    @BindView(R.id.continentTextView)
-    TextView mContinentTextView;
-    @BindView(R.id.listview)
-    ListView mListView;
-    private String[] country = new String[] {"China", "Us", "Vietnam", "United Kingdom", "United Arab Emirates", "Ghana", "Kenya", "France", "Mexico", "Australia"};
-    private String[] continent = new String[] {"Asia", "North America", "Asia","Europe", "Asia", "Africa", "Africa", "Europe", "North America", "Oceania"};
+
+    //This activity is to be implemented in the future
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_country);
-        mListView = (ListView) findViewById(R.id.listview);
-        mContinentTextView = (TextView) findViewById(R.id.continentTextView);
 
-        MyCountryArrayAdapter adapter = new MyCountryArrayAdapter(this, android.R.layout.simple_list_item_1, country, continent);
-        mListView.setAdapter(adapter);
+        getSupportActionBar().setTitle("Covid Stats");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String country = ((TextView)view).getText().toString();
-                Toast.makeText(CountryActivity.this, country, Toast.LENGTH_LONG).show();
-            }
-        });
-
+        //getting the user input from previous activities
         Intent intent = getIntent();
-        String continent = intent.getStringExtra("continent");
-        mContinentTextView.setText("Specific Continent:" + continent);
+        String userName = intent.getStringExtra("userName");
+        String welcomeText= "Welcome to TrackCovid " + userName;
+        Toast.makeText(CountryActivity.this, welcomeText, Toast.LENGTH_LONG).show();
     }
 }

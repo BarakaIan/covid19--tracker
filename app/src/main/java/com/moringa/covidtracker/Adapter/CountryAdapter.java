@@ -91,7 +91,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
     public void onBindViewHolder(CountryHolder holder, final int position) {
         holder.countryTitle.setText("Total Death : " + countriesListed.get(position).getDeaths());
         holder.countryName.setText(countriesListed.get(position).getCountry());
-        Picasso.with(context).load(countriesListed.get(position).getCountryInfo().getFlag()).into(holder.image);
+//        Picasso.with(context).load(countriesListed.get(position).getCountryInfo().getFlag()).into(holder.image);
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

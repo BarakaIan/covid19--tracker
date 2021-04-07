@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+
         //Onclick function for navigating to the next activity
         mHomePageEnterButton.setOnClickListener(new View.OnClickListener() {
             @Override

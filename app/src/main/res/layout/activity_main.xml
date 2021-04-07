@@ -82,6 +82,7 @@ If we continue to behave normally this disease will trate us abnormally" />
         android:layout_centerHorizontal="true"
         android:background="@color/purple_500"
         android:text="Enter"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textSize="36sp" />
 
 </RelativeLayout>

@@ -6,34 +6,25 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
-import android.widget.ImageView;
+
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringa.covidtracker.R;
+import com.moringa.covidtracker.models.All;
 import com.moringa.covidtracker.models.CovidCases;
-import com.moringa.covidtracker.network.CovidApi;
-import com.moringa.covidtracker.network.CovidClient;
-import com.moringa.covidtracker.ui.CountryDetailActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
-import butterknife.BindView;
+import butterknife
+        .BindView;
 import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.CountryViewHolder> {
-    //    private List<All> mAll;
+        private List<All> mAll;
     private Context mContext;
     private List <CovidCases> mCorona;
 

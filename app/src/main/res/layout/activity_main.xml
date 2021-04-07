@@ -15,7 +15,7 @@
         android:layout_marginTop="5dp"
         android:fontFamily="monospace"
         android:padding="10dp"
-        android:text="ConaStat"
+        android:text="Covid Tracker"
         android:textColor="@color/teal_700"
         android:textSize="30sp"
         android:textStyle="bold" />

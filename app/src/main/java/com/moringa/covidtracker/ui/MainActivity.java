@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.moringa.covidtracker.R;
 
@@ -18,8 +19,9 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.getStartedButton) Button mGetStartedButton;
-    @BindView(R.id.nameEditText) EditText mNameEditText;
+    @BindView(R.id.aboutButton) Button mAboutButton;
+    @BindView(R.id.appNameTextView)
+    TextView mappNameTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +30,11 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         //Onclick function for navigating to the next activity
-        mGetStartedButton.setOnClickListener(new View.OnClickListener() {
+        mAboutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = mNameEditText.getText().toString();
-                Intent intent = new Intent(MainActivity.this, CountryActivity.class);
+                String name = mappNameTextView.getText().toString();
+                Intent intent = new Intent(MainActivity.this, CountryDetailActivity.class);
                 intent.putExtra("userName", name);
                 startActivity(intent);
             }
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.item1:
-                Intent intent = new Intent(MainActivity.this, CountryActivity.class);
+                Intent intent = new Intent(MainActivity.this, CountryDetailActivity.class);
                 startActivity(intent);
                 return true;
             default:

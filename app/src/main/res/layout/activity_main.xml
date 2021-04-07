@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
         android:text="COVID TRACKER"
-        android:textColor="@color/colorDivider"
+        android:textColor="@color/white"
         android:textSize="50sp"
         android:textStyle="bold" />
 

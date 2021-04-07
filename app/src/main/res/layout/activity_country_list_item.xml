@@ -15,9 +15,9 @@
             android:id="@+id/countryNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Country Name"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/colorPrimary"
+            android:text="Country Name"
+            android:textColor="?attr/colorOnSecondary"
             android:textSize="25dp"
             android:textStyle="bold" />
 

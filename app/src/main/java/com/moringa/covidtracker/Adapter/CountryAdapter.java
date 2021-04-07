@@ -99,11 +99,11 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
             public void onClick(View view) {
 
 
-                CoronaService coronaService =
-                        CoronaApi.getRetrofitInstance().create(CoronaService.class);
+//                CoronaService coronaService =
+//                        CoronaApi.getRetrofitInstance().create(CoronaService.class);
 
 
-                Call<CountriesResponse> call = coronaService.getCountryInfo(countriesListed.get(position).getCountry());
+                Call<CountriesResponse> call = CoronaService.getCountryInfo(countriesListed.get(position).getCountry());
                 call.enqueue(new Callback<CountriesResponse>() {
                     @Override
                     public void onResponse(Call<CountriesResponse> call, Response<CountriesResponse> response) {

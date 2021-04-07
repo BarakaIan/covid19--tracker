@@ -1,35 +1,44 @@
 package com.moringa.covidtracker.network;
 
-import android.telecom.Call;
-
+import com.moringa.covidtracker.models.AllCountriesResponse;
 import com.moringa.covidtracker.models.CountriesResponse;
 
+import java.util.List;
+
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface CoronaApi {
 
-    private static Retrofit retrofit;
-    private static final String BASE_URL = "https://corona.lmao.ninja/v2/";
-
-    //    public static final String PREFERENCES_EMAIL_KEY = "email";
-    public static final String FIREBASE_QUERY_INDEX = "index";
     public static final String FIREBASE_CHILD_Email = "email";
-
     public static final String FIREBASE_CHILD_Password = "password";
 
-
-    public static Retrofit getRetrofitInstance() {
-
-        if (retrofit == null) {
-            retrofit = new retrofit2.Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-        }
-        return retrofit;
+    @GET("countries/?sort=country")
+    static retrofit2.Call<List<CountriesResponse>> getCountries() {
+        return null;
     }
 
+
+    @GET("countries/{country}")
+    public static retrofit2.Call<CountriesResponse> getCountryInfo(
+
+            @Path("country") String country
+    ) {
+        return null;
+    }
+
+    @GET("all")
+    static Call<AllCountriesResponse> getAllCountries() {
+        return null;
+    }
 }
+
+
+
+
+
+

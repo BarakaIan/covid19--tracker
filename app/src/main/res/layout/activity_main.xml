@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
+    <corners android:radius="24dp" />
+    <solid android:color="#F00" />
+
 
     <ImageView
         android:id="@+id/imageView"
@@ -34,53 +37,28 @@
         android:textStyle="bold" />
 
     <!--    Get user input in the edit text-->
-
-
-    <EditText
-        android:id="@+id/textEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/HomepageEnterButton"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="192dp"
-        android:background="@color/white"
-        android:padding="10dp"
-        android:text="If we continue to behave normally, this disease will treat us abnormally, thus Covid 19 is a dangerous disease caused by a virus detected in 2019 hence the name covid19.
-Most common symptoms:
-fever
-dry cough
-tiredness.Less common symptoms:
-aches and pains
-sore throat
-diarrhoea
-conjunctivitis
-headache
-loss of taste or smell
-a rash on skin, or discolouration of fingers or toes. Serious symptoms:
-difficulty breathing or shortness of breath
-chest pain or pressure
-loss of speech or movement.
-
-If we continue to behave normally this disease will trate us abnormally" />
-
     <EditText
         android:id="@+id/nameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/HomepageEnterButton"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="44dp"
         android:background="@color/white"
         android:hint="Enter your user name"
-        android:padding="10dp" />
+        android:padding="10dp"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/HomepageEnterButton"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dip"
+        android:layout_marginBottom="106dp"
         android:layout_centerHorizontal="true"
-        android:background="@color/purple_500"
+
+        android:background="@color/design_default_color_primary"
         android:text="Enter"
         android:textColor="@color/white"
         android:textSize="36sp" />

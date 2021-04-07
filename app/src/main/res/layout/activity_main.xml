@@ -7,21 +7,61 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/doctor" />
+        android:src="@drawable/virus_horizontal" />
 
     <TextView
         android:id="@+id/appNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="88dp"
+        android:fontFamily="sans-serif"
+        android:text="TRACKER APP"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
-        android:text="COVID TRACKER"
+        android:text="COVID"
         android:textColor="@color/white"
-        android:textSize="50sp"
+        android:textSize="60sp"
         android:textStyle="bold" />
 
     <!--    Get user input in the edit text-->
+
+
+    <EditText
+        android:id="@+id/textEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/HomepageEnterButton"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="192dp"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:text="If we continue to behave normally, this disease will treat us abnormally, thus Covid 19 is a dangerous disease caused by a virus detected in 2019 hence the name covid19.
+Most common symptoms:
+fever
+dry cough
+tiredness.Less common symptoms:
+aches and pains
+sore throat
+diarrhoea
+conjunctivitis
+headache
+loss of taste or smell
+a rash on skin, or discolouration of fingers or toes. Serious symptoms:
+difficulty breathing or shortness of breath
+chest pain or pressure
+loss of speech or movement.
+
+If we continue to behave normally this disease will trate us abnormally" />
 
     <EditText
         android:id="@+id/nameEditText"

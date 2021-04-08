@@ -7,6 +7,7 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
+
     defaultConfig {
         applicationId "com.moringa.covidtracker"
         minSdkVersion 21
@@ -15,6 +16,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    defaultConfig {
+        multiDexEnabled true
     }
 
     buildTypes {

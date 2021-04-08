@@ -43,10 +43,10 @@
 
     <TextView
         android:id="@+id/editNameTextView"
-        android:layout_width="match_parent"
-        android:layout_height="118dp"
+        android:layout_width="399dp"
+        android:layout_height="159dp"
         android:layout_above="@+id/nameEditText"
-        android:layout_marginBottom="152dp"
+        android:layout_marginBottom="72dp"
         android:fontFamily="@font/yatra_one"
         android:text="IF WE CONTINUE TO BEHAVE NORMALY THIS DISEASE WILL TREAT US ABNORMALLY"
         android:textColor="@color/white"

@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "1097482292048",
-    "project_id": "football-app-bcd8a",
-    "storage_bucket": "football-app-bcd8a.appspot.com"
+    "project_number": "66399619175",
+    "project_id": "covid-tracker-5f408",
+    "storage_bucket": "covid-tracker-5f408.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1097482292048:android:4b2920f581e3e46927fa55",
+        "mobilesdk_app_id": "1:66399619175:android:f418f78616e52b3f7aacc2",
         "android_client_info": {
-          "package_name": "com.moringa.covidtracker"
+          "package_name": "com.moringaschool.covidtracker"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1097482292048-c74evru2coq8a8rcd3antg4536gcnbtc.apps.googleusercontent.com",
+          "client_id": "66399619175-pr1f114aimim8u85tvb9882sk47fhe79.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDG9YSG3OETWWJ54iNx0wsjZiVkrMIWIIc"
+          "current_key": "AIzaSyBDF1hJvn6gdZG8uEiwsGRoXvgd1scA9Ls"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1097482292048-c74evru2coq8a8rcd3antg4536gcnbtc.apps.googleusercontent.com",
+              "client_id": "66399619175-pr1f114aimim8u85tvb9882sk47fhe79.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+
 }
 
 android {
@@ -60,3 +61,10 @@ dependencies {
     implementation 'com.jakewharton:butterknife:10.2.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
 }
+
+
+// ADD THIS AT THE BOTTOM
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.android.application'
+
+

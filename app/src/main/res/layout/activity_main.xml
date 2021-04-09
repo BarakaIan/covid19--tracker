@@ -9,16 +9,65 @@
         android:scaleType="centerCrop"
         android:src="@drawable/doctor" />
 
+    <!--    <TextView-->
+<!--        android:id="@+id/howNameTextView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_marginTop="69dp"-->
+<!--        android:fontFamily="sans-serif"-->
+<!--        android:text="TRACKER APP"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="55sp"-->
+<!--        android:textStyle="bold" />-->
+
     <TextView
         android:id="@+id/appNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:text="COVID TRACKER"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="39dp"
+        android:text="WELCOME"
         android:textColor="@color/white"
         android:textSize="50sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/nameNameTextView"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textNameTextView"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="132dp"
+        android:text="TO"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/ianNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="351dp"
+        android:fontFamily="sans-serif"
+        android:text="TRACKER APP"
+        android:textColor="@color/white"
+        android:textSize="55sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textNameTextView"
+        android:layout_width="232dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/HomepageEnterButton"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="348dp"
+        android:text="COVID"
+        android:textColor="@color/white"
+        android:textSize="60sp"
         android:textStyle="bold" />
 
     <EditText

@@ -15,4 +15,5 @@
     <string name="title_activity_country_row">country_row</string>
     <string name="title_activity_covid_case">covid_case</string>
     <string name="title_activity_covid_list_item_drag">covid_list_item_drag</string>
+    <string name="title_activity_splash">splash</string>
 </resources>

@@ -1,9 +1,15 @@
 package com.moringa.covidtracker.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,76 +18,114 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.moringa.covidtracker.Adapter.CountryAdapter;
 import com.moringa.covidtracker.R;
+import com.moringa.covidtracker.models.CountriesResponse;
+import com.moringa.covidtracker.network.CoronaApi;
+import com.moringa.covidtracker.network.CoronaService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-public class MainActivity extends AppCompatActivity {
-    @BindView(R.id.HomepageEnterButton) Button mHomePageEnterButton;
-    @BindView(R.id.nameEditText)
-    EditText mNameEditText;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-    String country;
+public class MainActivity extends AppCompatActivity {
+
+
+    private SearchView searchView;
+    private RecyclerView recyclerView;
+    private CountryAdapter countryAdapter;
+    private List<CountriesResponse> countriesResponseList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
 
-        //Onclick listener for the enter button and passing country input to the country activity
-        mHomePageEnterButton.setOnClickListener(new View.OnClickListener() {
+
+        recyclerView = findViewById(R.id.rvCountry);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        countryAdapter = new CountryAdapter();
+        recyclerView.setAdapter(countryAdapter);
+
+        countriesResponseList = new ArrayList<>();
+
+        CoronaService coronaService =
+                CoronaApi.getRetrofitInstance().create(CoronaService.class);
+
+
+        Call<List<CountriesResponse>> call = coronaService.getCountries();
+        call.enqueue(new Callback<List<CountriesResponse>>() {
             @Override
-            public void onClick(View v) {
-                country = mNameEditText.getText().toString();
-                country = toJadenCase(country);
-                Intent intent = new Intent(MainActivity.this,CreateAccountActivity.class);
-                intent.putExtra("country", country);
-                startActivity(intent);
+            public void onResponse(Call<List<CountriesResponse>> call, Response<List<CountriesResponse>> response) {
+
+                countriesResponseList = response.body();
+
+
+                if (countriesResponseList != null) {
+                    for (CountriesResponse countriesResponse : countriesResponseList) {
+
+                        System.out.println("Country Name : " + countriesResponse.getCountry() + " - Death Count : " + countriesResponse.getDeaths() + "\n");
+
+                        countryAdapter.setCountryList(getApplicationContext(), countriesResponseList);
+
+
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<CountriesResponse>> call, Throwable t) {
+                Log.d("Error", t.getMessage());
             }
         });
     }
 
-    //Create the additional menu with the button
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_bar, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView = (SearchView) menu.findItem(R.id.action_search)
+                .getActionView();
+        searchView.setSearchableInfo(searchManager
+                .getSearchableInfo(getComponentName()));
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                countryAdapter.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+                countryAdapter.getFilter().filter(query);
+                return false;
+            }
+        });
         return true;
     }
 
-    //Create functions to be performed on the items in the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.item1:
-                country = mNameEditText.getText().toString();
-                country = toJadenCase(country);
-                Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
-                intent.putExtra("country", country);
-                startActivity(intent);
-                return true;
-            case R.id.action_logout:
-                logout();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    //For converting to JadenCase which is the form that the api takes for the country input e.g: sierra leone = Sierra Leone
-    public String toJadenCase(String phrase) {
-        if(phrase == null || phrase.equals("")) return null;
-
-        char[] array = phrase.toCharArray();
-
-        for(int x = 0; x < array.length; x++) {
-            if(x == 0 || array[x-1] == ' ') {
-                array[x] = Character.toUpperCase(array[x]);
-            }
+        int id = item.getItemId();
+        if (id == R.id.action_search);
+        if (id == R.id.action_logout){
+            logout();
+            return true;
         }
 
-        return new String(array);
+        return super.onOptionsItemSelected(item);
     }
 
     private void logout() {
@@ -90,5 +134,14 @@ public class MainActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!searchView.isIconified()) {
+            searchView.setIconified(true);
+            return;
+        }
+        super.onBackPressed();
     }
 }

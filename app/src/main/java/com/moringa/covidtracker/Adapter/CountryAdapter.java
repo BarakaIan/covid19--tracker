@@ -182,7 +182,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
         };
     }
 
-
+//
     public class CountryHolder extends RecyclerView.ViewHolder {
         CardView cardView;
         TextView countryTitle;

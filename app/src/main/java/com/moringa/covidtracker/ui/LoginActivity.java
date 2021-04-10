@@ -1,5 +1,6 @@
 package com.moringa.covidtracker.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,50 +22,61 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringa.covidtracker.R;
+import com.moringa.covidtracker.network.CoronaApi;
+import com.moringa.covidtracker.network.CoronaService;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
     public static final String TAG = LoginActivity.class.getSimpleName();
+
+//    private SharedPreferences mSharedPreferences;
+//    private SharedPreferences.Editor mEditor;
+//    private String mRecentAddress;
 
     private DatabaseReference mSaveEmailReference;
     private DatabaseReference mSavePasswordReference;
 
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-
-    @BindView(R.id.logInButton)
-    Button mLogInButton;
+    @BindView(R.id.passwordLoginButton)
+    Button mPasswordLoginButton;
     @BindView(R.id.emailEditText)
     EditText mEmailEditText;
-    @BindView(R.id.passwordEditText)
-    EditText mPasswordEditText;
-    @BindView(R.id.createAccountTextView)
-    TextView mCreateAccountTextView;
+    @BindView(R.id.passwordEditText) EditText mPasswordEditText;
+    @BindView(R.id.registerTextView)
+    TextView mRegisterTextView;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private ProgressDialog mAuthProgressDialog;
+    private String Email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        FirebaseApp.initializeApp(this);
+
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mEditor = mSharedPreferences.edit();
 
         mSaveEmailReference = FirebaseDatabase
                 .getInstance()
                 .getReference()
-                .child(CoronaService.FIREBASE_CHILD_Email);
+                .child(CoronaApi.FIREBASE_CHILD_Email);
         mSavePasswordReference = FirebaseDatabase
                 .getInstance()
                 .getReference()
-                .child(CoronaService.FIREBASE_CHILD_Password);
+                .child(CoronaApi.FIREBASE_CHILD_Password);
 
+
+        mRegisterTextView.setOnClickListener(this);
+        mPasswordLoginButton.setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
+        mAuthListener = new FirebaseAuth.AuthStateListener(){
             @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
+                if(user != null){
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
@@ -72,46 +84,52 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         };
-
-        mCreateAccountTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, NewAccountActivity.class);
-                intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-            }
-        });
-
-        mLogInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginWithPassword();
-            }
-        });
+        createAuthProgressDialog();
     }
 
     public void saveLocationToFirebase(String location) {
         mSaveEmailReference.push().setValue(location);
     }
-
     public void saveLocationalToFirebase(String locational) {
         mSavePasswordReference.push().setValue(locational);
     }
 
-    private void loginWithPassword() {
+    private void createAuthProgressDialog(){
+        mAuthProgressDialog = new ProgressDialog(this);
+        mAuthProgressDialog.setTitle("Loading...");
+        mAuthProgressDialog.setMessage("Authenticating with Firebase...");
+        mAuthProgressDialog.setCancelable(false);
+    }
+    @Override
+    public void onClick(View view){
+        if(view == mRegisterTextView){
+            Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        if (view == mPasswordLoginButton){
+            loginWithPassword();
+        }
+    }
+    private void loginWithPassword(){
         String email = mEmailEditText.getText().toString().trim();
         saveLocationToFirebase(email);
         String password = mPasswordEditText.getText().toString().trim();
         saveLocationToFirebase(password);
-        if (email.equals("")) {
+        if(email.equals("")){
             mEmailEditText.setError("Please Enter Your Email");
+//            addToSharedPreferences(email);
+            return;
         }
-        if (password.equals("")) {
+        if(password.equals("")){
             mPasswordEditText.setError("Password cannot be blank");
+            return;
         }
+        mAuthProgressDialog.show();
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                mAuthProgressDialog.dismiss();
                 Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
                 if(!task.isSuccessful()){
                     Log.w(TAG, "signInWithEmail", task.getException());
@@ -121,6 +139,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+//    private void addToSharedPreferences(String email) {
+//        mEditor.putString(CoronaApi.PREFERENCES_EMAIL_KEY, email).apply();
+//      Log.d("Shared Pref Email", mRecentAddress);
+//    }
 
     @Override
     public void onStart(){

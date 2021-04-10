@@ -11,6 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CovidTracker">
+        <activity
+            android:name=".covid_list_item_drag"
+            android:label="@string/title_activity_covid_list_item_drag"
+            android:theme="@style/Theme.CovidTracker.NoActionBar"></activity>
         <activity android:name=".ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,8 +28,7 @@
         <activity
             android:name=".ui.CountryActivity"
             android:parentActivityName=".ui.MainActivity" />
-        <activity android:name=".ui.MainActivity">
-        </activity>
+        <activity android:name=".ui.MainActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

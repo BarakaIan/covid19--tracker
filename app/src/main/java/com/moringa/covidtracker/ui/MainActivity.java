@@ -17,6 +17,7 @@ import com.moringa.covidtracker.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.HomepageEnterButton) Button mHomePageEnterButton;
     @BindView(R.id.nameEditText)
@@ -52,20 +53,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Create functions to be performed on the items in the menu
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.item1:
-                country = mNameEditText.getText().toString();
-                country = toJadenCase(country);
-                Intent intent = new Intent(MainActivity.this, FAQActivity.class);
-                intent.putExtra("country", country);
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.item1:
+//                country = mNameEditText.getText().toString();
+//                country = toJadenCase(country);
+//                Intent intent = new Intent(MainActivity.this, FAQActivity.class);
+//                intent.putExtra("country", country);
+//                startActivity(intent);
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
 
     //For converting to JadenCase which is the form that the api takes for the country input e.g: sierra leone = Sierra Leone
     public String toJadenCase(String phrase) {

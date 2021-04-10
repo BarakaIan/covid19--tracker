@@ -1,6 +1,5 @@
 package com.moringa.covidtracker.ui;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,8 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringa.covidtracker.R;
-import com.moringa.covidtracker.network.CovidApi;
-import com.moringa.covidtracker.network.CovidClient;
+import com.moringa.covidtracker.network.CoronaService;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,11 +54,11 @@ public class LoginActivity extends AppCompatActivity {
         mSaveEmailReference = FirebaseDatabase
                 .getInstance()
                 .getReference()
-                .child(CovidClient.FIREBASE_CHILD_Email);
+                .child(CoronaService.FIREBASE_CHILD_Email);
         mSavePasswordReference = FirebaseDatabase
                 .getInstance()
                 .getReference()
-                .child(CovidClient.FIREBASE_CHILD_Password);
+                .child(CoronaService.FIREBASE_CHILD_Password);
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {

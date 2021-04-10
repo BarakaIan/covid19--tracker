@@ -18,9 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.NewAccountActivity" />
         <activity
-            android:name=".ui.FAQActivity"
+            android:name=".ui.CreateAccountActivity"
             android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.CountryActivity"

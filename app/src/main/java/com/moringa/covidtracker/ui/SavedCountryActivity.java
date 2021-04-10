@@ -1,4 +1,4 @@
 package com.moringa.covidtracker.ui;
 
-public class CountryDetailActivity {
+public class SavedCountryActivity {
 }

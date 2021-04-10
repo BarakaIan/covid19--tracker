@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.moringa.covidtracker.R;
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 country = mNameEditText.getText().toString();
                 country = toJadenCase(country);
-                Intent intent = new Intent(MainActivity.this,NewAccountActivity.class);
+                Intent intent = new Intent(MainActivity.this,CreateAccountActivity.class);
                 intent.putExtra("country", country);
                 startActivity(intent);
             }
@@ -58,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.item1:
                 country = mNameEditText.getText().toString();
                 country = toJadenCase(country);
-                Intent intent = new Intent(MainActivity.this, FAQActivity.class);
+                Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
                 intent.putExtra("country", country);
                 startActivity(intent);
                 return true;

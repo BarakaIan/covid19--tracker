@@ -1,4 +1,6 @@
 package com.moringa.covidtracker.ui;
 
-public class SavedCountryActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SavedCountryActivity <RecyclerView> extends AppCompatActivity {
 }

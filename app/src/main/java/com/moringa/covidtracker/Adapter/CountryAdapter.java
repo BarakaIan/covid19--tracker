@@ -14,7 +14,6 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.moringa.covidtracker.R;
 import com.moringa.covidtracker.models.CountriesResponse;
 import com.moringa.covidtracker.network.CoronaApi;
@@ -92,6 +91,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 
@@ -182,7 +182,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
         };
     }
 
-//
+
     public class CountryHolder extends RecyclerView.ViewHolder {
         CardView cardView;
         TextView countryTitle;
@@ -198,7 +198,6 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
             image = v.findViewById(R.id.ivCountryPoster);
         }
     }
-
 
 
 }

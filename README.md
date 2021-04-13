@@ -5,21 +5,19 @@
 #### By **Ian Baraka**
 
 ## Description
-A user can see the deaths of a particular country.
-The user can search for a particular country.
-A user can see all the symptoms.
+A user can see the deaths of a particular country
+A user can see all the symptoms
+A user can the lesscommon symptoms.
+Auser can see the most common symptoms
 
 ## Behavior Driven Development
 
 | BEHAVIOR:Our program should handle |                  Input Example When it receives                   |           Output Example It should return           |
 | ---------------------------------- | :---------------------------------------------------------------: | :-------------------------------------------------: |
- click on the search button in the nav             Inputs:-country:"China"                               | | deaths:23456
-
- A toast displays "Welcome:                          Enter button is clicked on
- bar to view the country's status.                                                  |                                                   
-|It displays the searched country and the number of deaths.  If a country has be inputted it navigates to the other activity   
-| Scroll to view the Mostcommon symptoms                          |                      |                           |
-                  |                      |                      |
+ click on the search button in the nav bar to view the country's status                 |        Inputs:-country:"China"|               A toast displays "Welcome: Kelly Egesa              |
+| Click on Enter button                          |   Enter button is clicked on|        If a country has be inputted it navigates to the other activity         |
+| Scroll to view the Mostcommon symptoms                          |               Scroll in the f_a_q activity           |               All the symptoms are displayed                 |
+                  |                      |               The symptoms is displayed in full          |
 
 ## Known Bugs
 
